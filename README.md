@@ -1,2 +1,2 @@
-# ComputingAsteroidOrbits
+# ModelingAndSimulation
 A university course.
