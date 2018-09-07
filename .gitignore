@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Specials
+_loc
+dep
+bin
+*.bin
