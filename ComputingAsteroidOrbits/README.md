@@ -1,2 +1,0 @@
-# ComputingAsteroidOrbits
-A university course.
