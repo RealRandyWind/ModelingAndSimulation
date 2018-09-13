@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{7157C580-1102-4DA1-ADEE-5301266969F7}</ProjectGuid>
+    <ProjectGuid>{36070617-23E7-4043-B6AC-5C0BA01457E9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SimulatingCollidingGalaxies</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
@@ -31,7 +31,6 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -39,14 +38,12 @@
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -54,7 +51,6 @@
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -74,55 +70,26 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Platform)\</OutDir>
-    <IntDir>bin\$(Platform)\</IntDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Platform)\</OutDir>
-    <IntDir>bin\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>..\bin\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>..\bin\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Platform)\</OutDir>
-    <IntDir>bin\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>..\bin\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Platform)\</OutDir>
-    <IntDir>bin\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\</OutDir>
+    <IntDir>..\bin\$(Platform)\</IntDir>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);$(SolutionDir);$(SolutionDir)dep;$(SolutionDir)dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-    <PreBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(SolutionDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\$(Platform)\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Copies dependecies</Message>
-    </PreBuildEvent>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -131,26 +98,31 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclu
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);$(SolutionDir);$(SolutionDir)dep;$(SolutionDir)dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(SolutionDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\$(Platform)\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Copies dependecies</Message>
-    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -162,28 +134,16 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclu
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);$(SolutionDir);$(SolutionDir)dep;$(SolutionDir)dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(SolutionDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\$(Platform)\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Copies dependecies</Message>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -195,28 +155,16 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclu
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);$(SolutionDir);$(SolutionDir)dep;$(SolutionDir)dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PreBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(SolutionDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\$(Platform)\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(SolutionDir)lib\*.dll $(OutDir) -Force
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
-PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll</Command>
-    </PreBuildEvent>
-    <PreBuildEvent>
-      <Message>Copies dependecies</Message>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -225,15 +173,15 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclu
   <ItemGroup>
     <ClCompile Include="SimulatingCollidingGalaxies.cpp" />
     <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelingAndSimulation.vcxproj">
-      <Project>{39c0dd0c-71ac-4275-b5a0-118a2e5d01a3}</Project>
+      <Project>{94944352-9377-455a-9b16-5d2542cb931b}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

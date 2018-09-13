@@ -20,41 +20,37 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{39C0DD0C-71AC-4275-B5A0-118A2E5D01A3}</ProjectGuid>
+    <ProjectGuid>{94944352-9377-455A-9B16-5D2542CB931B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ModelingAndSimulation</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -100,26 +96,30 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MODELINGANDSIMULATION_EXPORTS;_WINDOWS;_DEBUG;_USRDLL;_DEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
-      <Command>PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
       <Message>Copies dependecies, and mocs Qt sources</Message>
     </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).dll $(ProjectDir)lib\$(Platform)\ -Force
-PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$(Platform)\ -Force</Command>
-      <Message>Copies project dll and lib to librairy directory</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -127,26 +127,30 @@ PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MODELINGANDSIMULATION_EXPORTS;_WINDOWS;_DEBUG;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
-      <Command>PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
       <Message>Copies dependecies, and mocs Qt sources</Message>
     </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).dll $(ProjectDir)lib\$(Platform)\ -Force
-PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$(Platform)\ -Force</Command>
-      <Message>Copies project dll and lib to librairy directory</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -156,28 +160,32 @@ PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MODELINGANDSIMULATION_EXPORTS;_WINDOWS;_DEBUG;_USRDLL;NDEBUG;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
-      <Command>PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
       <Message>Copies dependecies, and mocs Qt sources</Message>
     </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).dll $(ProjectDir)lib\$(Platform)\ -Force
-PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$(Platform)\ -Force</Command>
-      <Message>Copies project dll and lib to librairy directory</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -187,38 +195,38 @@ PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>MODELINGANDSIMULATION_EXPORTS;_WINDOWS;_DEBUG;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>dep;dep\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
-      <Command>PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
       <Message>Copies dependecies, and mocs Qt sources</Message>
     </PreBuildEvent>
-    <PostBuildEvent>
-      <Command>PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).dll $(ProjectDir)lib\$(Platform)\ -Force
-PowerShell.exe -Command Copy-Item $(OutDir)$(ProjectName).lib $(ProjectDir)lib\$(Platform)\ -Force</Command>
-      <Message>Copies project dll and lib to librairy directory</Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Configurations.h" />
-    <ClInclude Include="ModelingAndSimulation.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="ModelingAndSimulation.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
