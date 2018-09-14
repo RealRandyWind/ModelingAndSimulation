@@ -98,7 +98,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);dep\$(Platform)\QtGui;dep\$(Platform)\QtCore;dep\$(Platform)\Qt3DCore</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -129,7 +129,7 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);dep\$(Platform)\QtGui;dep\$(Platform)\QtCore;dep\$(Platform)\Qt3DCore</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,7 +162,7 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);dep\$(Platform)\QtGui;dep\$(Platform)\QtCore;dep\$(Platform)\Qt3DCore</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -197,7 +197,7 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>dep;dep\$(Platform);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>dep;dep\$(Platform);dep\$(Platform)\QtGui;dep\$(Platform)\QtCore;dep\$(Platform)\Qt3DCore</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -223,10 +223,12 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Window.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -98,13 +98,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,13 +115,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -134,15 +134,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,15 +155,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Charts.lib;Qt5Core.lib;Qt5DataVisualization.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
