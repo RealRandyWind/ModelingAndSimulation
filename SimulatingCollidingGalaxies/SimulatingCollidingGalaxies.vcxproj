@@ -106,6 +106,17 @@
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy shaders</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -123,6 +134,17 @@
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy shaders</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -144,6 +166,17 @@
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy shaders</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -165,6 +198,17 @@
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copy shaders</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />

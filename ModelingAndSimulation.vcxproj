@@ -115,10 +115,16 @@
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
 PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force
 PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copies dependecies, and mocs Qt sources</Message>
+      <Message>Copy dependecies, copy shaders, and moc Qt sources</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,10 +152,16 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
 PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force
 PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copies dependecies, and mocs Qt sources</Message>
+      <Message>Copy dependecies, copy shaders, and moc Qt sources</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -181,10 +193,16 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
 PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force
 PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copies dependecies, and mocs Qt sources</Message>
+      <Message>Copy dependecies, copy shaders, and moc Qt sources</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -216,13 +234,20 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)dep\$(Platform)\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
 PowerShell.exe -Command Copy-Item $(ProjectDir)dep\*.dll $(OutDir) -Force -Exclude $(OutDir)*.dll
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.vert $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.comp $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.geom $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tesse $(OutDir) -Force
+PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force
 PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir) Q*.h</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Message>Copies dependecies, and mocs Qt sources</Message>
+      <Message>Copy dependecies, copy shaders, and moc Qt sources</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BarnsHutMethod.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -235,6 +260,10 @@ PowerShell.exe -ExecutionPolicy bypass -File $(ProjectDir)QtMoc.ps1 $(ProjectDir
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.frag" />
+    <None Include="default.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

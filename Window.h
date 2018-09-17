@@ -12,7 +12,7 @@ namespace ModelingAndSimulation
 	struct FWindow
 	{ 
 		FReal LookSpeed, MoveSpeed, FieldOfView, AspectRatio, Near, Far;
-		FSize Width, Height, X, Y;
+		FSize Width, Height, X, Y, _UpdateCount;
 		FBoolean bFullScreen, bWait, bPerspective;
 		FString Title, Style, Simulation;
 		NDev::TColor<FReal> Color;
@@ -22,9 +22,11 @@ namespace ModelingAndSimulation
 
 		static FWindow Default();
 
-		static FWindow& Display(const NDev::FDescriptor &, FWindow &);
+		static FVoid Display(const NDev::FDescriptor &, FWindow &);
 
-		FVoid Update(const NDev::FDescriptor &, FWindow &);
+		static FVoid _Make(const NDev::FDescriptor &, FWindow &);
+
+		static FVoid _Update(const NDev::FDescriptor &, FWindow &);
 
 		static FReturn Wait();
 
