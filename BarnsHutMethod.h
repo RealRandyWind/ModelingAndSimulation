@@ -53,6 +53,7 @@ namespace ModelingAndSimulation
 			virtual FVoid _Step(TSequence<typename FSimulation::FPoint> &Result, typename FSimulation::FOnVisualize OnVisualize) override
 			{
 				if (OnVisualize) { _Result(Result);  OnVisualize(Result); }
+
 				this->Stop();
 			}
 
