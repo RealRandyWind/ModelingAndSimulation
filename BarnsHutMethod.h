@@ -50,14 +50,14 @@ namespace ModelingAndSimulation
 				}
 			}
 
-			virtual FVoid _Step(TSequence<typename FSimulation::FPoint> &Result, typename FSimulation::FOnVisualize OnVisualize) override
+			virtual FVoid _Step(TData<typename FSimulation::FPoint> &Result) override
 			{
-				if (OnVisualize) { _Result(Result);  OnVisualize(Result); }
+				if (this->OnVisualizeResult) { _Result(Result);  this->OnVisualizeResult(Result); }
 
 				this->Stop();
 			}
 
-			virtual FVoid _Result(TSequence<typename FSimulation::FPoint> &Result) override
+			virtual FVoid _Result(TData<typename FSimulation::FPoint> &Result) override
 			{
 				Result.Data(State.Entities.Descriptor());
 			}

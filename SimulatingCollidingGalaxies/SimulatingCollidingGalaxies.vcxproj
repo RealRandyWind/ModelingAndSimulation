@@ -104,7 +104,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NDev.lib;Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
@@ -132,7 +132,7 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NDev.lib;Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
@@ -164,7 +164,7 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NDev.lib;Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
@@ -196,7 +196,7 @@ PowerShell.exe -Command Copy-Item $(ProjectDir)*.tessc $(OutDir) -Force</Command
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dep\$(Platform);$(SolutionDir)dep;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NDev.lib;Qt5Core.lib;Qt5Gui.lib;Qt53DCore.lib;Qt53DExtras.lib;Qt53DInput.lib;Qt53DRender.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>PowerShell.exe -Command Copy-Item $(ProjectDir)*.frag $(OutDir) -Force
