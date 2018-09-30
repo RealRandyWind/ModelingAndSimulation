@@ -5,7 +5,9 @@
 
 #include "QtCore/QUrl"
 #include "QtCore/QString"
+#include "QtCore/QFile"
 #include "QtCore/QByteArray"
+#include "QtCore/QPointer"
 
 #include "Qt3DCore/QEntity"
 #include "Qt3DCore/QAspectEngine"
@@ -19,6 +21,7 @@
 #include "Qt3DRender/QCamera"
 #include "Qt3DRender/QCameraLens"
 #include "Qt3DRender/QShaderProgram"
+#include "Qt3DRender/QRenderSettings"
 
 #include "Qt3DInput/QInputAspect"
 
@@ -33,10 +36,10 @@ namespace ModelingAndSimulation
 
 		~_FWindow() { Scene = NullPtr; View = NullPtr; Renderer = NullPtr; Shader = NullPtr; }
 		
-		Qt3DRender::QShaderProgram *Shader;
-		Qt3DExtras::Qt3DWindow *View;
-		Qt3DExtras::QForwardRenderer *Renderer;
-		Qt3DCore::QEntity *Scene;
+		QPointer<Qt3DRender::QShaderProgram> Shader;
+		QPointer<Qt3DExtras::Qt3DWindow> View;
+		QPointer<Qt3DExtras::QForwardRenderer> Renderer;
+		QPointer<Qt3DCore::QEntity> Scene;
 	};
 }
 
@@ -64,6 +67,7 @@ FWindow FWindow::Default()
 	Window.bFullScreen = false;
 	Window.bWait = false;
 	Window.bPerspective = true;
+	Window.bHold = false;
 	Window.Far = 0.1;
 	Window.Near = 1000;
 	Window.FieldOfView = 35;
@@ -130,21 +134,23 @@ FVoid FWindow::_Make(const NDev::FDescriptor &Buffer, FWindow &Window)
 	auto _Buffer = new Qt3DRender::QBuffer();
 	_Buffer->setData(QByteArray(Buffer.Bytes, Buffer.Size * Buffer.SizeOf));
 	_Buffer->setAccessType(Qt3DRender::QBuffer::AccessType::Read);
-	_Buffer->setUsage(Qt3DRender::QBuffer::UsageType::DynamicDraw);
-
-	/* Configure Attribute */
-	auto Attribute = new Qt3DRender::QAttribute(_Buffer, Qt3DRender::QAttribute::VertexBaseType::Byte, Buffer.SizeOf, Buffer.Size, Buffer.Offset, Buffer.Stride);
+	_Buffer->setUsage(Qt3DRender::QBuffer::UsageType::DynamicDraw);	
+	_Buffer->setType(Qt3DRender::QBuffer::BufferType::VertexBuffer);
 
 	/* Configure Shaders */
 	auto Shader = new Qt3DRender::QShaderProgram(Scene);
 	if (Window.Simulation)
 	{
 		_Buffer->setAccessType(Qt3DRender::QBuffer::AccessType::ReadWrite);
-		Shader->setComputeShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl(QString(Window.Simulation) + ".comp")));
+		Shader->setComputeShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl::fromLocalFile(QString(Window.Simulation) + ".comp")));
 	}
-	auto Style = !Window.Style ? QString(Window.Style) : QString("default");
-	Shader->setVertexShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl(Style + ".vert")));
-	Shader->setFragmentShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl(Style + ".frag")));
+
+	auto Style = Window.Style ? QString(Window.Style) : QString("default");
+	Shader->setVertexShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl::fromLocalFile(Style + ".vert")));
+	Shader->setFragmentShaderCode(Qt3DRender::QShaderProgram::loadSource(QUrl::fromLocalFile(Style + ".frag")));
+
+	/* Configure Attribute */
+	auto Attribute = new Qt3DRender::QAttribute(_Buffer, Qt3DRender::QAttribute::VertexBaseType::Byte, Buffer.SizeOf, Buffer.Size, Buffer.Offset, Buffer.Stride);
 
 	/* Configure Controler */
 	auto Manipulator = new Qt3DExtras::QOrbitCameraController(Scene);
@@ -170,6 +176,7 @@ FVoid FWindow::_Make(const NDev::FDescriptor &Buffer, FWindow &Window)
 
 FVoid FWindow::_Update(const NDev::FDescriptor &Buffer, FWindow &Window)
 {
+	if (!Window.bHold) { /* Clear Screen */ }
 	++Window._UpdateCount;
 }
 

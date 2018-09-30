@@ -3,6 +3,7 @@
 #include "NDevTypes.h"
 #include "NDevDefinitions.h"
 #include "NDevPoint.h"
+#include "NDevSequence.h"
 #include "NDevMathAliases.h"
 
 namespace ModelingAndSimulation
@@ -13,7 +14,7 @@ namespace ModelingAndSimulation
 	{ 
 		FReal LookSpeed, MoveSpeed, FieldOfView, AspectRatio, Near, Far;
 		FSize Width, Height, X, Y, _UpdateCount;
-		FBoolean bFullScreen, bWait, bPerspective;
+		FBoolean bFullScreen, bWait, bPerspective, bHold, bReConfigure;
 		FString Title, Style, Simulation;
 		NDev::TColor<FReal> Color;
 		NDev::TPoint3D<FReal> LookAt, Position, Up;

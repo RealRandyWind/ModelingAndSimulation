@@ -22,9 +22,23 @@ namespace ModelingAndSimulation
 				FSize NEntities;
 			};
 
+			struct FEntity
+			{
+				typename FSimulation::FPoint Position;
+				typename FSimulation::FPoint Velocity;
+			};
+
+			struct FCluster
+			{
+				typename FEntity Entity;
+				TSequence<FEntity *> Entities;
+				TSequence<FCluster *> Clusters;
+			};
+
 			struct FState
 			{
-				TSequence<typename FSimulation::FPoint> Entities;
+				TSequence<FEntity> Entities;
+				TSequence<FCluster> Clusters;
 			};
 
 			FParameters Parameters;
@@ -46,14 +60,14 @@ namespace ModelingAndSimulation
 				State.Entities.Reserve(Parameters.NEntities, true);
 				for (auto &Entity : State.Entities)
 				{
-					Distribution(Entity);
+					Distribution(Entity.Position);
+					Entity.Velocity = 0;
 				}
 			}
 
 			virtual FVoid _Step(TData<typename FSimulation::FPoint> &Result) override
 			{
 				if (this->OnVisualizeResult) { _Result(Result);  this->OnVisualizeResult(Result); }
-
 				this->Stop();
 			}
 
